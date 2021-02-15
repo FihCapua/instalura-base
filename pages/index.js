@@ -1,4 +1,6 @@
 import Menu from '../src/components/commons/Menu';
+import Text from '../src/components/foundation/Text';
+import { Button } from '../src/components/commons/Button';
 import Footer from '../src/components/commons/Footer';
 
 export default function Home() {
@@ -11,6 +13,45 @@ export default function Home() {
       justifyContent: 'space-between',
     }}>
       <Menu/>
+    
+    <div>
+      <Text
+        variant="title"
+        tag="h1"
+        color="tertiary.main"
+        // componente textAlign recebe um objeto
+        textAlign={{
+          xs: 'center',
+          md: 'left'
+        }}
+      >
+        Compartilhe momentos e conecte-se com seus amigos
+      </Text>
+      <Text
+        variant="paragraph"
+        tag="p"
+        color="tertiary.light"
+        textAlign={{
+          xs: 'center',
+          md: 'left'
+        }}
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.
+      </Text>
+
+      <Button 
+        variant="primary.main"
+        margin={{
+          xs: 'auto',
+          md: 'initial',
+        }}
+        display="block"
+      >
+        Cadastrar
+      </Button>
+      </div>
+
       <Footer />
     </div>
   )
