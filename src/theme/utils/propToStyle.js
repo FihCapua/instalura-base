@@ -1,38 +1,45 @@
 import { css } from 'styled-components';
-import { breakpointsMedia } from "./breakpointsMedia";
+import { breakpointsMedia } from './breakpointsMedia';
 
+// eslint-disable-next-line import/prefer-default-export
 export function propToStyle(propName) {
-    return function(props) {
+  // eslint-disable-next-line func-names
+  return function (props) {
+    const propValue = props[propName]; // string ou object
 
-        const propValue = props[propName]; // string ou object
-
-        if(typeof propValue === 'string') {
-            return {
-                //textAlign: props.textAlign
-                // Objeto que tem como chave e valor o a propriedade dinâmica textAlign 
-                [propName]: propValue
-            }
-        }
-
-        if(typeof propValue === 'object') {
-            // precisa receber um objeto de acordo c/ o valor especificado
-            return breakpointsMedia({
-                xs: {
-                   [propName]: propValue.xs
-                },
-                sm: {
-                   [propName]: propValue.sm
-                },
-                md: {
-                   [propName]: propValue.md
-                },
-                lg: {
-                   [propName]: propValue.lg
-                },
-                xl: {
-                   [propName]: propValue.xl
-                },
-            })
-        }
+    if (typeof propValue === 'string' || typeof propValue === 'number') {
+      return {
+        // textAlign: props.textAlign
+        // Objeto que tem como chave e valor o a propriedade dinâmica textAlign
+        [propName]: propValue,
+      };
     }
+
+    if (typeof propValue === 'object') {
+      // precisa receber um objeto de acordo c/ o valor especificado
+      return css`
+        ${breakpointsMedia({
+    ...(propValue.xs && {
+      xs: { [propName]: propValue.xs },
+    }),
+    ...(propValue.sm && {
+      sm: { [propName]: propValue.sm },
+    }),
+    ...(propValue.md && {
+      md: { [propName]: propValue.md },
+    }),
+    ...(propValue.lg && {
+      lg: { [propName]: propValue.lg },
+    }),
+    ...(propValue.xl && {
+      xl: { [propName]: propValue.xl },
+    }),
+  })}
+      `;
+    }
+
+    return {
+      [propName]: props[propName],
+    };
+  };
 }

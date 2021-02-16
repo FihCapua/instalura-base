@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable func-names */
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import { TextStyleVariantsMap } from '../../foundation/Text';
@@ -9,15 +11,15 @@ const ButtonGhost = css`
     background: transparent;
 `;
 
-const ButtonDefault = css `
+const ButtonDefault = css`
     color: #fff;
     background-color: ${function(props) {
-        return get(props.theme, `colors.${props.variant}.color`)
-    }};
-    color: ${function (props){
-        return get(props.theme, `colors.${props.variant}.contrastText`)
-    }};
-`   
+    return get(props.theme, `colors.${props.variant}.color`)
+  }};
+    color: ${function (props) {
+    return get(props.theme, `colors.${props.variant}.contrastText`)
+  }};
+`;
 
 export const Button = styled.button `
     border: 0;
@@ -28,12 +30,12 @@ export const Button = styled.button `
 
     ${TextStyleVariantsMap.smallestException}
 
-    ${function(props) {
-        if(props.ghost){
-            return ButtonGhost;
-        }
-        return ButtonDefault;
-    }}
+    ${function (props) {
+    if (props.ghost) {
+      return ButtonGhost;
+    }
+    return ButtonDefault;
+  }}
     transition: opacity ${({ theme }) => theme.transition};
     border-radius: ${({ theme }) => theme.borderRadius};
     &:hover,
@@ -41,14 +43,14 @@ export const Button = styled.button `
         opacity: .5;
     }
 
-    ${breakpointsMedia ({
-        xs: css `
+    ${breakpointsMedia({
+    xs: css`
             ${TextStyleVariantsMap.smallestException}
         `,
-        md: css `
+    md: css`
             ${TextStyleVariantsMap.paragraph1}
         `,
-    })} 
+  })} 
 
     ${propToStyle('margin')}
     ${propToStyle('display')}

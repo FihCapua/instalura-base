@@ -1,7 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
 import { TextStyleVariantsMap } from '../../../foundation/Text';
-
 
 // Estilo Geral de Menu
 export const MenuWrapper = styled.nav`
@@ -29,7 +29,7 @@ export const MenuWrapper = styled.nav`
     xl: css`
       max-width: 1222px;
     `,
-})}
+  })}
 `;
 
 MenuWrapper.LeftSide = styled.div`
@@ -41,13 +41,13 @@ MenuWrapper.LeftSide = styled.div`
         width: 131px;
         height: 32px;
 `,
-})}
+  })}
   ${breakpointsMedia({
     md: css`
       order: initial;
       padding-right: 16px;
     `,
-})}
+  })}
 `;
 
 MenuWrapper.CentralSide = styled.div`
@@ -74,7 +74,7 @@ MenuWrapper.CentralSide = styled.div`
       padding-top: 0;
       padding-bottom: 0;
     `,
-})}
+  })}
   a {
     text-align: center;
     display: block;
@@ -88,7 +88,7 @@ MenuWrapper.CentralSide = styled.div`
     md: css`
       ${TextStyleVariantsMap.paragraph1}
     `,
-})}
+  })}
     &:hover,
     &:focus {
       font-weight: 500;
@@ -108,5 +108,5 @@ MenuWrapper.RightSide = styled.div`
     md: css`
       order: initial;
     `,
-})}
-`; 
+  })}
+`;
