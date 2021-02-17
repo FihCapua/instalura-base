@@ -13,11 +13,11 @@ const ButtonGhost = css`
 
 const ButtonDefault = css`
     color: #fff;
-    background-color: ${function(props) {
-    return get(props.theme, `colors.${props.variant}.color`)
+    background-color: ${function (props) {
+    return get(props.theme, `colors.${props.variant}.color`);
   }};
     color: ${function (props) {
-    return get(props.theme, `colors.${props.variant}.contrastText`)
+    return get(props.theme, `colors.${props.variant}.contrastText`);
   }};
 `;
 
