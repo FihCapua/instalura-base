@@ -5,8 +5,11 @@ import Footer from '../src/components/commons/Footer';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+  const [isModalOpen, setModalState] = React.useState(false);
+
   return (
     <Box
       flex={1}
@@ -18,6 +21,25 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      {/* SOLID
+        {isModalOpen && <Modal /> */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Box
+            backgroundColor="white"
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            Modal Maravilhoso
+          </Box>
+        )}
+      </Modal>
+
       <Menu />
 
       <Grid.Container
@@ -69,6 +91,10 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                // função toggle - mudança de estado - habilitado/desabilitado
+                setModalState(!isModalOpen);
+              }}
             >
               Cadastrar
             </Button>

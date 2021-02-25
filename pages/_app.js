@@ -1,5 +1,8 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/react-in-jsx-scope */
+
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Head from 'next/head';
 import theme from '../src/theme';

@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -10,7 +9,10 @@ export default class MyDocument extends Document {
 
     try {
       // eslint-disable-next-line max-len
-      ctx.renderPage = () => originalRenderPage({ enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />) });
+      ctx.renderPage = () => originalRenderPage({
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      });
 
       const initialProps = await Document.getInitialProps(ctx);
       return {
@@ -21,7 +23,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-      }
+      };
     } finally {
       sheet.seal();
     }
