@@ -32,7 +32,7 @@ export const colors = {
       contrastText: '#fff',
     },
     light: {
-      color: '#88989E',
+      color: '#8c8c8c',
       contrastText: '#fff',
     },
   },

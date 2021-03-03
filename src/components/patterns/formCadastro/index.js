@@ -21,8 +21,8 @@ function FormContent() {
   const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
 
   const [userInfo, setUserInfo] = React.useState({
-    user: 'FihCapua',
-    nome: 'Fiama de Capua',
+    user: '',
+    nome: '',
   });
 
   function handleChange(event) {
@@ -128,7 +128,7 @@ function FormContent() {
             width="50px"
             height="50px"
             className="lottie-container basic"
-            config={{ animationData: successAnimation, loop: true, autoplay: true }}
+            config={{ animationData: successAnimation, loop: false, autoplay: true }}
           />
           <p>Dados enviados com sucesso</p>
         </Box>
@@ -144,7 +144,7 @@ function FormContent() {
             width="50px"
             height="50px"
             className="lottie-container basic"
-            config={{ animationData: errorAnimation, loop: true, autoplay: true }}
+            config={{ animationData: errorAnimation, loop: false, autoplay: true }}
           />
           <p>Erro no envio dos dados</p>
         </Box>
