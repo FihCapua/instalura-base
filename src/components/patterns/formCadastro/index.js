@@ -9,7 +9,7 @@ import successAnimation from './animation/success.json';
 import errorAnimation from './animation/error.json';
 
 // Passando todos os possíveis estados que o componente pode ter
-const formStates = {
+const formState = {
   DEFAULT: 'DEFAULT',
   LOADING: 'LOADING',
   DONE: 'DONE',
@@ -18,7 +18,7 @@ const formStates = {
 
 function FormContent() {
   const [isFormSubmited, setIsFormSubmited] = React.useState(false);
-  const [submissionStatus, setSubmissionStatus] = React.useState(formStates.DEFAULT);
+  const [submissionStatus, setSubmissionStatus] = React.useState(formState.DEFAULT);
 
   const [userInfo, setUserInfo] = React.useState({
     user: '',
@@ -63,13 +63,13 @@ function FormContent() {
           throw new Error('Não foi possível cadastrar seu usuário agora =(');
         })
         .then((respostaConvertidaEmObjeto) => {
-          setSubmissionStatus(formStates.DONE);
+          setSubmissionStatus(formState.DONE);
           // eslint-disable-next-line no-console
           console.log(respostaConvertidaEmObjeto);
         })
         // Se der erro em qualquer ponto da promisse - retorna o Error
         .catch((error) => {
-          setSubmissionStatus(formStates.ERROR);
+          setSubmissionStatus(formState.ERROR);
           // eslint-disable-next-line no-console
           console.log(error);
         });
@@ -88,8 +88,8 @@ function FormContent() {
         color="tertiary.light"
         marginBottom="32px"
       >
-        Você está a um passo de saber tudoo que está
-        rolando no bairro, complete seu cadastro agora!
+        Você está a um passo de saber tudo que está
+        rolando, complete seu cadastro agora!
       </Text>
 
       <div>
@@ -118,7 +118,7 @@ function FormContent() {
         Cadastrar
       </Button>
 
-      {isFormSubmited && submissionStatus === formStates.DONE && (
+      {isFormSubmited && submissionStatus === formState.DONE && (
         <Box
           display="flex"
           justifyContent="center"
@@ -134,7 +134,7 @@ function FormContent() {
         </Box>
       )}
 
-      {isFormSubmited && submissionStatus === formStates.ERROR && (
+      {isFormSubmited && submissionStatus === formState.ERROR && (
         <Box
           display="flex"
           justifyContent="center"
