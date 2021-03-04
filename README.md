@@ -1,6 +1,6 @@
 # Instalura - Projeto base do Bootcamp JAM Stack
 
-## Módulo 01
+## Módulo 02
 
 ![N|Solid](https://github.com/alura-challenges/instalura-base/raw/main/_docs/projeto-base.png)
 
