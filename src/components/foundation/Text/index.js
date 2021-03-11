@@ -42,6 +42,7 @@ const TextBase = styled.span`
     ${propToStyle('textAlign')}
     ${propToStyle('marginBottom')}
     ${propToStyle('margin')}
+    ${propToStyle('width')}
 `;
 
 export default function Text({
