@@ -49,7 +49,7 @@ export const Grid = {
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
-    margin-top: -20px;
+    margin-top: 10px;
     ${function ({ value }) {
     if (typeof value === 'number') {
       return css`

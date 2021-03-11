@@ -1,7 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable func-names */
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
+import Link from '../Link';
 import { TextStyleVariantsMap } from '../../foundation/Text';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import { propToStyle } from '../../../theme/utils/propToStyle';
@@ -21,7 +24,7 @@ const ButtonDefault = css`
   }};
 `;
 
-export const Button = styled.button`
+const ButtonWrapper = styled.button`
     border: 0;
     cursor: pointer;
     padding: 12px 26px;
@@ -64,3 +67,28 @@ export const Button = styled.button`
     ${propToStyle('margin')}
     ${propToStyle('display')}
 `;
+
+// eslint-disable-next-line react/prop-types
+export function Button({ href, children, ...props }) {
+  const hasHref = Boolean(href);
+  const tag = hasHref ? Link : 'button';
+  return (
+    <ButtonWrapper
+      as={tag}
+      href={href}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
+    >
+      {children}
+    </ButtonWrapper>
+  );
+}
+
+Button.defaultProps = {
+  href: undefined,
+};
+
+Button.propType = {
+  href: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
