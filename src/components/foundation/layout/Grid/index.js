@@ -39,9 +39,12 @@ export const Grid = {
     margin-left: -16px;
 
     ${propToStyle('flex')}
+    ${propToStyle('flexDirection')}
+    ${propToStyle('justifyContent')}
     ${propToStyle('marginLeft')}
     ${propToStyle('MarginRight')}
-    ${propToStyle('justifyContent')}
+    ${propToStyle('marginTop')}
+    ${propToStyle('marginBottom')}
   `,
   Col: styled.div`
     padding-right: 16px;
@@ -49,7 +52,7 @@ export const Grid = {
     flex-basis: 0;
     flex-grow: 1;
     max-width: 100%;
-    margin-top: -20px;
+    margin-top: 10px;
     ${function ({ value }) {
     if (typeof value === 'number') {
       return css`
@@ -139,6 +142,7 @@ export const Grid = {
   }}
     
     ${propToStyle('display')}
+    ${propToStyle('order')}
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}

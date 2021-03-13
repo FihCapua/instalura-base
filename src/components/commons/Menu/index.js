@@ -50,4 +50,4 @@ export default function Menu({ onRegisterClick }) {
 
 Menu.propTypes = {
   onRegisterClick: PropTypes.func.isRequired,
-}
+};
