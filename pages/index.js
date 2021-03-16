@@ -36,7 +36,6 @@ function HomeScreen() {
               variant="title"
               tag="h1"
               color="tertiary.main"
-              // componente textAlign recebe um objeto
               textAlign={{
                 xs: 'center',
                 md: 'left',

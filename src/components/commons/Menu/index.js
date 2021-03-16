@@ -5,7 +5,6 @@ import { Logo } from '../../../theme/Logo';
 import { Button } from '../Button';
 import Text from '../../foundation/Text';
 
-// Componente Menu
 export default function Menu({ onRegisterClick }) {
   const links = [
     {

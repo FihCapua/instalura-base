@@ -12,7 +12,7 @@ FAQPage.propTypes = FAQScreen.propTypes;
 export default websitePageHOC(FAQPage, {
   pageWrapperProps: {
     seoProps: {
-      headTitle: 'Perguntas Frequentes',
+      headTitle: 'FAQ - Perguntas Frequentes',
     },
   },
 });

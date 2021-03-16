@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Footer from '../../commons/Footer';
-import Menu from '../../commons/Menu';
-import Modal from '../../commons/Modal';
-import { Box } from '../../foundation/layout/Box';
-import FormCadastro from '../../patterns/formCadastro';
 import SEO from '../../commons/SEO';
+import Menu from '../../commons/Menu';
+import { Box } from '../../foundation/layout/Box';
+import Modal from '../../commons/Modal';
+import FormCadastro from '../../patterns/formCadastro';
+import Footer from '../../commons/Footer';
 
 export const WebsitePageContext = React.createContext({
   toggleModalRegister: () => {},
