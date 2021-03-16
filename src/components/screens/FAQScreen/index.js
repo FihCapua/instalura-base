@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
-import Menu from '../../commons/Menu';
-import Footer from '../../commons/Footer';
-import Modal from '../../commons/Modal';
-import FormCadastro from '../../patterns/formCadastro';
 
 export default function FAQScreen({ faqCategories }) {
-  const [isModalOpen, setModalState] = React.useState(false);
-
   return (
     <Box
       display="flex"
