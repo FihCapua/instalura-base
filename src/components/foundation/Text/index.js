@@ -35,11 +35,13 @@ export const TextStyleVariantsMap = {
   `,
 };
 const TextBase = styled.span`
-  ${(props) => TextStyleVariantsMap[props.variant]}
-  color: ${(props) => get(props.theme, `colors.${props.color}.color`)};
-  ${propToStyle('textAlign')}
-  ${propToStyle('marginBottom')}
-  ${propToStyle('margin')}
+    ${(props) => TextStyleVariantsMap[props.variant]}
+    color: ${(props) => get(props.theme, `colors.${props.color}.color`)};
+    
+    // propName vem da função chamada aqui - propriedade dinâmica de textAlign
+    ${propToStyle('textAlign')}
+    ${propToStyle('marginBottom')}
+    ${propToStyle('margin')}
 `;
 export default function Text({
   tag,
