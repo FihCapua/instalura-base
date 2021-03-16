@@ -2,8 +2,9 @@ import React from 'react';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
-import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
 import { Box } from '../src/components/foundation/layout/Box';
+import { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 function HomeScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
@@ -44,7 +45,7 @@ function HomeScreen() {
               Compartilhe momentos e conecte-se com seus amigos
             </Text>
             <Text
-              variant="paragraph"
+              variant="paragraph1"
               tag="p"
               color="tertiary.light"
               textAlign={{
@@ -86,19 +87,15 @@ function HomeScreen() {
   );
 }
 
-export default function Home() {
-  return (
-    <WebsitePageWrapper
-      seoProps={{
-        headTitle: 'Home',
-      }}
-      pageBoxProps={{
-        backgroundImage: 'url(/images/bubbles.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-}
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubbles.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});

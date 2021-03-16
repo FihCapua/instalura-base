@@ -37,7 +37,7 @@ export default function Menu({ onRegisterClick }) {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+        <Button ghost variant="secondary.main" href="/app/login">
           Entrar
         </Button>
         <Button variant="primary.main" onClick={onRegisterClick}>
