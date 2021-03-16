@@ -3,7 +3,7 @@ import { Lottie } from '@crello/react-lottie';
 import { Grid } from '../../foundation/layout/Grid';
 import { Box } from '../../foundation/layout/Box';
 import { Button } from '../../commons/Button';
-import TextField from '../../Forms/TextField';
+import TextField from '../../forms/TextField';
 import Text from '../../foundation/Text';
 import successAnimation from './animation/success.json';
 import errorAnimation from './animation/error.json';
@@ -178,6 +178,10 @@ export default function FormCadastro({ propsDoModal }) {
           padding={{
             xs: '16px',
             md: '85px',
+          }}
+          margin={{
+            xs: '-10px',
+            md: '-10px 0',
           }}
           backgroundColor="white"
             // eslint-disable-next-line react/jsx-props-no-spreading

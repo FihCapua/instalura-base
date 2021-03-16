@@ -1,47 +1,19 @@
 import React from 'react';
-import Menu from '../src/components/commons/Menu';
 import Text from '../src/components/foundation/Text';
-import Footer from '../src/components/commons/Footer';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
+import WebsitePageWrapper, { WebsitePageContext } from '../src/components/wrappers/WebsitePage';
 import { Box } from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/commons/Modal';
-import FormCadastro from '../src/components/patterns/formCadastro';
 
-export default function Home() {
-  const [isModalOpen, setModalState] = React.useState(false);
+function HomeScreen() {
+  const websitePageContext = React.useContext(WebsitePageContext);
 
   return (
     <Box
-      flex={1}
       display="flex"
-      flexWrap="wrap"
       flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
+      flex="1"
     >
-      {/* SOLID
-        {isModalOpen && <Modal /> */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro
-            propsDoModal={propsDoModal}
-            onClose={() => setModalState(false)}
-          />
-        )}
-      </Modal>
-
-      <Menu
-        onRegisterClick={() => setModalState(true)}
-      />
-
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -91,10 +63,7 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
-              onClick={() => {
-                // função toggle - mudança de estado - habilitado/desabilitado
-                setModalState(!isModalOpen);
-              }}
+              onClick={() => websitePageContext.toggleModalRegister()}
             >
               Cadastrar
             </Button>
@@ -113,8 +82,23 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-      <Footer />
     </Box>
+  );
+}
+
+export default function Home() {
+  return (
+    <WebsitePageWrapper
+      seoProps={{
+        headTitle: 'Home',
+      }}
+      pageBoxProps={{
+        backgroundImage: 'url(/images/bubbles.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom right',
+      }}
+    >
+      <HomeScreen />
+    </WebsitePageWrapper>
   );
 }
