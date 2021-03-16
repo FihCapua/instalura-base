@@ -37,46 +37,45 @@ export default function FAQScreen({ faqCategories }) {
           flex="1"
         >
           {
-            faqCategories && faqCategories.map((category) => (
-              <Grid.Col
-                value={{ xs: 12, md: 3 }}
-                flex={1}
-                key={category.title}
-              >
-                <Box
-                  width="100%"
+              faqCategories && faqCategories.map((category) => (
+                <Grid.Col
+                  value={{ xs: 12, md: 3 }}
+                  flex={1}
+                  key={category.title}
                 >
-                  <Text
-                    variant="subTitle"
-                    tag="h2"
-                    color="tertiary.main"
-                    marginBottom="26px"
-                  >
-                    {category.title}
-                  </Text>
-
                   <Box
-                    as="ul"
-                    padding="0"
-                    listStyle="none"
+                    width="100%"
                   >
-                    {category.questions.map((question) => (
-                      <li key={question.title}>
-                        <Text
-                          href={`/faq/${question.slug}`}
-                          variant="paragraph1"
-                          tag="h2"
-                          color="tertiary.light"
-                        >
-                          {question.title}
-                        </Text>
-                      </li>
-                    ))}
+                    <Text
+                      variant="subTitle"
+                      tag="h2"
+                      color="tertiary.main"
+                      marginBottom="26px"
+                    >
+                      {category.title}
+                    </Text>
+                    <Box
+                      as="ul"
+                      padding="0"
+                      listStyle="none"
+                    >
+                      {category.questions.map((question) => (
+                        <li key={question.title}>
+                          <Text
+                            href={`/faq/${question.slug}`}
+                            variant="paragraph1"
+                            tag="h2"
+                            color="tertiary.light"
+                          >
+                            {question.title}
+                          </Text>
+                        </li>
+                      ))}
+                    </Box>
                   </Box>
-                </Box>
-              </Grid.Col>
-            ))
-          }
+                </Grid.Col>
+              ))
+            }
         </Grid.Row>
       </Grid.Container>
     </Box>

@@ -4,7 +4,7 @@ import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 function LoginScreen() {
   return (
     <div>
-      Página de Login
+      Login
     </div>
   );
 }
