@@ -7,6 +7,7 @@ function FAQPage({ faqCategories }) {
     <FAQScreen faqCategories={faqCategories} />
   );
 }
+
 FAQPage.propTypes = FAQScreen.propTypes;
 
 export default websitePageHOC(FAQPage, {
