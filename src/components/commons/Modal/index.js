@@ -84,11 +84,13 @@ function Modal({ isOpen, onClose, children }) {
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.node,
+  // eslint-disable-next-line react/require-default-props
+  children: PropTypes.node.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
 Modal.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
   children: null,
 };
 
