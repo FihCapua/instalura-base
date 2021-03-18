@@ -1,8 +1,8 @@
-const redirects = require('./config/redirects');
+const redirect = require('./config/redirects');
 
 module.exports = {
   trailingSlash: true,
   async redirects() {
-    return redirects;
+    return redirect;
   },
 };
