@@ -1,9 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import DefaultErrorPage from 'next/error';
 import FAQQuestionScreen from '../../src/components/screens/FAQQuestionScreen';
 import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
-import Page404 from '../error/404';
 
 function FAQInternalScreen({ category, question }) {
   return (

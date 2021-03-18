@@ -5,7 +5,7 @@ module.exports = [
     permanent: true,
   },
   // {
-  //   source: '/_error',
+  //   source: '/error/',
   //   destination: '/error/404',
   // },
 ];
