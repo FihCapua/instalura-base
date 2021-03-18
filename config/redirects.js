@@ -1,8 +1,9 @@
 module.exports = [
-  // {
-  //   source: '/error/',
-  //   destination: '/error/404',
-  // },
+  {
+    source: '/404/',
+    destination: '/error/404',
+    permanent: true,
+  },
   {
     source: '/login/',
     destination: '/app/login',
