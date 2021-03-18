@@ -2,8 +2,8 @@
 import React from 'react';
 import { Lottie } from '@crello/react-lottie';
 import constructAnimation from './animation/page-construction.json';
-import { Box } from '../../src/components/foundation/layout/Box';
-import Text from '../../src/components/foundation/Text';
+import { Box } from '../src/components/foundation/layout/Box';
+import Text from '../src/components/foundation/Text';
 
 export default function Page404() {
   return (
