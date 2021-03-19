@@ -5,4 +5,17 @@ module.exports = {
   async redirects() {
     return redirect;
   },
+  async headers() {
+    return [
+      {
+        source: '/app/:path*/',
+        headers: [
+          {
+            key: 'X-FRAME-Options',
+            value: 'DENY',
+          },
+        ],
+      },
+    ];
+  },
 };
