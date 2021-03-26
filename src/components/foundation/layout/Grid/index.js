@@ -26,7 +26,11 @@ const Container = styled.div`
       max-width: 1222px;
     `,
   })}
+
   ${propToStyle('marginTop')}
+  ${propToStyle('display')}
+  ${propToStyle('flex')}
+  ${propToStyle('alignItems')}
 `;
 
 // eslint-disable-next-line import/prefer-default-export
