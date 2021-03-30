@@ -1,15 +1,16 @@
-<reference types="cypress" />
+// eslint-disable-next-line react/react-in-jsx-scope
+<reference types="cypress" />;
 
 describe(' /pages/app/login', () => {
-    it('preencha os campos e vá para a página /aap/profile', () => {
-        cy.visit('/app/login');
+  it('preencha os campos e vá para a página /app/profile', () => {
+    cy.visit('/app/login/');
 
-        cy.get('#formCadastro input[name="usuario"]').type('fiamacapua');
+    cy.get('#formCadastro input[name="usuario"]').type('omariosouto');
 
-        cy.get('#formCadastro input[name="senha"]').type('senhasegura');
+    cy.get('#formCadastro input[name="senha"]').type('senhasegura');
 
-        cy.get('#formCadastro button[type="submit"]').click();
+    cy.get('#formCadastro button[type="submit"]').click();
 
-        cy.url().should('include', '/app/profile');
-    })
-})
+    cy.url().should('include', '/app/profile');
+  });
+});
