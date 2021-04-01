@@ -6,7 +6,7 @@ module.exports = [
   },
   {
     source: '/login/',
-    destination: '/app/login',
+    destination: '/app/login/',
     permanent: true,
   },
 ];
