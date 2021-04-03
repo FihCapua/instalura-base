@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
-import { propToStyle } from '../../../theme/utils/propToStyle';
+import { propToStyle } from '../../../theme/utils/propToStyle/index';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 import Link from '../../commons/Link';
 

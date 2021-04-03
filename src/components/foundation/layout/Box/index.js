@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { propToStyle } from '../../../../theme/utils/propToStyle';
+import { propToStyle } from '../../../../theme/utils/propToStyle/index';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Box = styled.div`
