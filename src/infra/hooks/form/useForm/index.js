@@ -48,6 +48,7 @@ export function useForm({
     },
     // Validação do form
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touched,
     handleBlur(event) {
