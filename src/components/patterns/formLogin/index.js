@@ -17,6 +17,7 @@ const loginSchema = yup.object().shape({
     .min(8, 'Sua senha precisa ter ao menos 8 caracteres'),
 });
 
+// eslint-disable-next-line react/prop-types
 export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
@@ -35,6 +36,7 @@ export default function LoginForm({ onSubmit }) {
           router.push('/app/profile');
         })
         .catch((err) => {
+          // eslint-disable-next-line no-console
           console.log(err);
         })
         .finally(() => {
