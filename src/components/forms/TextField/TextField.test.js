@@ -39,8 +39,6 @@ describe('<TextField />', () => {
         const inputNome = screen.getByPlaceholderText(/nome/i);
         user.type(inputNome, 'devsoutinho@gmail.com');
 
-        console.log(onChangeMock.mock);
-
         expect(onChangeMock).toHaveBeenCalledTimes(21);
       });
     });
