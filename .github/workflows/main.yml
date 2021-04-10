@@ -31,8 +31,15 @@ jobs:
         run: yarn install
       - name: Run linter!
         run: yarn lint
-
-unit_tests:
+##################################
+# Runs a single command using the runners shell
+      - name: Node Version
+        run: node -v
+      - name: Install de dependencias
+        run: yarn install
+      - name: Roda o Linter!
+        run: yarn lint
+  unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
@@ -72,7 +79,7 @@ unit_tests:
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      # ###################
+      # ####################
 
       # Commands that will run:
       - name: Install Packages
@@ -80,3 +87,4 @@ unit_tests:
 
       - name: Run Integration Tests
         run: yarn test:integration:build
+        
