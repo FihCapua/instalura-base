@@ -36,7 +36,8 @@ export function useForm({
   React.useEffect(() => {
     validateValues(values)
       .catch((err) => {
-
+        // eslint-disable-next-line no-console
+        console.log(err);
       });
   }, [values]);
 
