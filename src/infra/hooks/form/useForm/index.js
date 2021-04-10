@@ -1,5 +1,16 @@
 import React from 'react';
 
+function formatErrors(yupErrorsInner = []) {
+  return yupErrorsInner.reduce((errorObjectAcc, currentError) => {
+    const fieldName = currentError.path;
+    const errorMessage = currentError.message;
+    return {
+      ...errorObjectAcc,
+      [fieldName]: errorMessage,
+    };
+  }, {});
+}
+
 export function useForm({
   initialValues,
   onSubmit,
@@ -11,23 +22,22 @@ export function useForm({
   const [errors, setErrors] = React.useState({});
   const [touched, setTouchedFields] = React.useState({});
 
+  async function validateValues(currentValues) {
+    try {
+      await validateSchema(currentValues);
+      setErrors({});
+      setIsFormDisabled(false);
+    } catch (err) {
+      const formatedErrors = formatErrors(err.inner);
+      setErrors(formatedErrors);
+      setIsFormDisabled(true);
+    }
+  }
   React.useEffect(() => {
-    validateSchema(values)
-      .then(() => {
-        setIsFormDisabled(false);
-        setErrors({});
-      })
+    validateValues(values)
       .catch((err) => {
-        const formatedErrors = err.inner.reduce((errorObjectAcc, currentError) => {
-          const fieldName = currentError.path;
-          const errorMessage = currentError.message;
-          return {
-            ...errorObjectAcc,
-            [fieldName]: errorMessage,
-          };
-        }, {});
-        setErrors(formatedErrors);
-        setIsFormDisabled(true);
+        // eslint-disable-next-line no-console
+        console.log(err);
       });
   }, [values]);
 
@@ -48,6 +58,7 @@ export function useForm({
     },
     // Validação do form
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touched,
     handleBlur(event) {
