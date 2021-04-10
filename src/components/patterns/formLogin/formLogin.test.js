@@ -1,6 +1,6 @@
 import React from 'react';
 import user from '@testing-library/user-event';
-import FormLogin from './index';
+import FormLogin from '.';
 import {
   render,
   act,
@@ -8,44 +8,47 @@ import {
   waitFor,
 } from '../../../infra/tests/testUtils';
 
-const onSubmit = jest.fn();
-onSubmit.mockImplementation((event) => {
-  event.preventDefault();
-});
+const onSubmitMock = jest.fn((e) => e.preventDefault());
+// onSubmiteMock.mockImplementation((event) => {
+//   event.preventDefault();
+// });
 
 describe('<FormLogin />', () => {
   describe('when form fields are valid', () => {
-    test('complete a submission', async () => {
+    test('it completes the submission', async () => {
       await act(async () => render(
         <FormLogin
-          onSubmit={onSubmit}
-        />
-        ,
+          onSubmit={onSubmitMock}
+        />,
       ));
 
-      expect(screen.getByRole('button')).toBeDisabled();
+      const submitButton = screen.getByRole('button');
+      expect(submitButton).toBeDisabled();
 
-      const inputUsuario = screen.getByPlaceholderText('Usuário');
+      const inputUsuario = screen.getByPlaceholderText(/usuário/i);
       user.type(inputUsuario, 'someusername');
       await waitFor(() => expect(inputUsuario).toHaveValue('someusername'));
 
-      const inputSenha = screen.getByPlaceholderText('Senha');
+      const inputSenha = screen.getByPlaceholderText(/senha/i);
       user.type(inputSenha, 'somepassword');
       await waitFor(() => expect(inputSenha).toHaveValue('somepassword'));
 
-      expect(screen.getByRole('button')).not.toBeDisabled();
+      expect(submitButton).not.toBeDisabled();
 
-      user.click(screen.getByRole('button'));
+      user.click(submitButton);
 
-      expect(onSubmit).toHaveBeenCalledTimes(1);
+      // screen.debug();
+
+      expect(onSubmitMock).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('when form fields are invalid', () => {
     test('displays the respective errors', async () => {
-      render(<FormLogin onSubmit={onSubmit} />);
+      render(<FormLogin onSubmit={onSubmitMock} />);
 
-      const inputUsuario = screen.getByPlaceholderText('Usuário');
+      const inputUsuario = screen.getByPlaceholderText(/usu(a|á)rio/i);
+
       inputUsuario.focus();
       inputUsuario.blur();
 
