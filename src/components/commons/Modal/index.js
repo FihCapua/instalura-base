@@ -44,7 +44,7 @@ function Modal({ isOpen, onClose, children }) {
   return (
     <ModalWrapper
       isOpen={isOpen}
-      onClick={() => {
+      onClick={(event) => {
         // eslint-disable-next-line no-restricted-globals
         const isSafeArea = event.target.closest('[data-modal-safe-area="true"]');
         if (!isSafeArea) {
