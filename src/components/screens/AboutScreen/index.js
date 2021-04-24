@@ -4,6 +4,8 @@ import Text from '../../foundation/Text';
 import { Box } from '../../foundation/layout/Box';
 import { Grid } from '../../foundation/layout/Grid';
 
+export { getContent } from './getContent';
+
 export default function AboutScreen({ messages }) {
   return (
     <Box
