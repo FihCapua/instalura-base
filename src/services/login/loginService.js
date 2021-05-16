@@ -3,9 +3,9 @@ import { isStagingEnv } from '../../infra/env/isStagingEnv';
 import { HttpClient } from '../../infra/http/HttpClient';
 
 const BASE_URL = isStagingEnv
-  // DEV Back End
+  // Back End de DEV
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
-  // PROD Back End
+  // Back End de PROD
   : 'https://instalura-api.omariosouto.vercel.app';
 
 export const LOGIN_COOKIE_APP_TOKEN = 'LOGIN_COOKIE_APP_TOKEN';
@@ -19,29 +19,28 @@ export const loginService = {
     return HttpClientModule(`${BASE_URL}/api/login`, {
       method: 'POST',
       body: {
-        username,
-        password,
+        username, // 'omariosouto'
+        password, // 'senhasegura'
       },
     })
-      .then((convertedResponse) => {
-        const { token } = convertedResponse.data;
+      .then((respostaConvertida) => {
+        const { token } = respostaConvertida.data;
         const hasToken = token;
         if (!hasToken) {
           throw new Error('Failed to login');
         }
         const DAY_IN_SECONDS = 86400;
-
+        // Salvar o Token
         setCookieModule(null, LOGIN_COOKIE_APP_TOKEN, token, {
           path: '/',
           maxAge: DAY_IN_SECONDS * 7,
         });
-
         return {
           token,
         };
       });
   },
-  async logout(context, destroyCookieModule = destroyCookie) {
-    destroyCookieModule(context, null, LOGIN_COOKIE_APP_TOKEN, { path: '/' });
+  async logout(ctx, destroyCookieModule = destroyCookie) {
+    destroyCookieModule(ctx, LOGIN_COOKIE_APP_TOKEN, { path: '/' });
   },
 };
