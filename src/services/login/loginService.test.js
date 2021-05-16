@@ -1,7 +1,8 @@
 import { loginService } from './loginService';
 
-const token = 'fake_token';
-
+const COOKIE_NAME = 'LOGIN_COOKIE_APP_TOKEN';
+const token = 'fake-token';
+const setCookieModule = jest.fn();
 async function HttpClientModule() {
   return {
     data: {
@@ -9,7 +10,6 @@ async function HttpClientModule() {
     },
   };
 }
-
 async function HttpClientModuleError() {
   return {
     data: {},
@@ -19,48 +19,48 @@ async function HttpClientModuleError() {
   };
 }
 
-const setCookieModule = jest.fn();
-
 describe('loginService', () => {
   describe('login()', () => {
-    describe('when user try to login', () => {
-      describe('and succeed', () => {
-        test('store its token', async () => {
+    describe('when a user attempts to log in', () => {
+      describe('and succeeds', () => {
+        test('its token is stored', async () => {
           const loginServiceResponse = await loginService.login({
             username: 'someusername',
             password: 'somepassword',
           }, setCookieModule, HttpClientModule);
 
           expect(setCookieModule).toHaveBeenCalledWith(
-            null, 'APP_TOKEN', token, {
+            null,
+            COOKIE_NAME,
+            token, {
               path: '/',
-              maxAge: 604800,
+              maxAge: 60 * 60 * 24 * 7,
             },
           );
+
           expect(loginServiceResponse).toEqual({ token });
         });
       });
 
-      describe('and it fails', () => {
-        test('throws an error', async () => {
+      describe('and fails', () => {
+        test('an error is thrown', async () => {
           await expect(loginService.login({
             username: 'someusername',
             password: 'somepassword',
           }, setCookieModule, HttpClientModuleError))
             .rejects
-            .toThrow('Failed to login');
+            .toThrowError('Failed to login');
         });
       });
     });
   });
 
   describe('logout()', () => {
-    describe('when user try to logout and succeed', () => {
-      test('remove its token', async () => {
-        const destroyCookie = jest.fn();
-        await loginService.logout(destroyCookie);
-
-        expect(destroyCookie).toHaveBeenCalledWith(null, 'APP_TOKEN');
+    describe('when a user attempts to log out', () => {
+      test('its token is removed', async () => {
+        const destroyCookieModule = jest.fn();
+        await loginService.logout(null, destroyCookieModule);
+        expect(destroyCookieModule).toHaveBeenCalledWith(null, COOKIE_NAME, { path: '/' });
       });
     });
   });
