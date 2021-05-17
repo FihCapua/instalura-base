@@ -6,7 +6,7 @@ const BASE_URL = isStagingEnv
 // DEV Back End
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
 // PROD Back End
-  : 'https://instalura-api.omariosouto.vercel.app';
+  : 'https://instalura-api-git-master-omariosouto.vercel.app';
 
 export const userService = {
   async getProfilePage(context) {
