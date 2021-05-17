@@ -3,10 +3,10 @@ import { isStagingEnv } from '../../infra/env/isStagingEnv';
 import { HttpClient } from '../../infra/http/HttpClient';
 
 const BASE_URL = isStagingEnv
-  // Back End de DEV
+  // DEV Back End
   ? 'https://instalura-api-git-master-omariosouto.vercel.app'
-  // Back End de PROD
-  : 'https://instalura-api.omariosouto.vercel.app';
+  // PROD Back End
+  : 'https://instalura-api-git-master-omariosouto.vercel.app';
 
 export const LOGIN_COOKIE_APP_TOKEN = 'LOGIN_COOKIE_APP_TOKEN';
 
